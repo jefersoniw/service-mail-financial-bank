@@ -29,8 +29,15 @@ class envioNotificacao extends Mailable
      */
     public function build()
     {
+
         return $this
             ->subject('ENVIO DE NOTIFICAÇÃO DE TRANSAÇÃO BANCÁRIA - FINANCIAL BANK')
-            ->view('Mail.index');
+            ->view('Mail.index', [
+                'saldo_disponivel' => $this->dados['saldo_disponivel'],
+                'mensagem' => $this->dados['mensagem'],
+                'tipo_transacao' => $this->dados['tipo_transacao'],
+                'valor_transacao' => $this->dados['valor_transacao'],
+                'data_transacao' => $this->dados['data_transacao'],
+            ]);
     }
 }

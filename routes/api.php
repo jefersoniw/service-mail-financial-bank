@@ -19,4 +19,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-route::get('/envio-email', [EnvioEmailController::class, 'index']);
+route::post('/envio-email', [EnvioEmailController::class, 'index']);
