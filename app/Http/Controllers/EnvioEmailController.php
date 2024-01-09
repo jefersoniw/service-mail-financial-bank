@@ -12,10 +12,11 @@ class EnvioEmailController extends Controller
     {
         $dados = [
             'email' => 'jeferson_chagas25@hotmail.com',
-            'tipo_transacao' => $request['tipo_transacao'] ?? 'Tipo Transaçâo',
-            'valor_transacao' => $request['valor_transacao'] ?? 'Valor Transaçâo',
-            'data_transacao' => $request['data_transacao'] ?? 'Data Transaçâo',
-            'saldo_disponivel' => $request['saldo_disponivel'] ?? 'Saldo Disponível',
+            'tipo_transacao' => $request['retorno']['transacao']['tipo_transacao']['desc_transacao'] ?? 'Tipo Transaçâo',
+            'valor_transacao' => $request['retorno']['transacao']['valor_transacao'] ?? 'Valor Transaçâo',
+            'data_transacao' => $request['retorno']['transacao']['created_at'] ?? 'Data Transaçâo',
+            'saldo_disponivel' => $request['retorno']['saldo_disponivel'] ?? 'Saldo Disponível',
+            'mensagem' => $request['retorno']['msg'] ?? 'Mensagem',
         ];
 
         Mail::to($dados['email'])->send(new envioNotificacao($dados));
